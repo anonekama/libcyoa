@@ -1,4 +1,6 @@
-export APP_MODULE=${APP_MODULE-api.main:app}
+#! /usr/bin/env bash
+
+export APP_MODULE=${APP_MODULE-libcyoa.main:app}
 export HOST=${HOST:-0.0.0.0}
 export PORT=${PORT:-8001}
 
