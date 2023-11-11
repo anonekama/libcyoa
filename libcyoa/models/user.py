@@ -6,6 +6,7 @@ from libcyoa.db.base_class import Base
 class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(256), index=True, nullable=False)
+    hashed_password = Column(String, nullable=False)
     email = Column(String, nullable=True)
     is_superuser = Column(Boolean, default=False)
     links = relationship(

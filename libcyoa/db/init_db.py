@@ -3,10 +3,9 @@ from sqlalchemy.orm import Session
 
 from libcyoa import crud, schemas
 from libcyoa.db import base  # noqa: F401
+from libcyoa.core.config import settings
 
 logger = logging.getLogger(__name__)
-
-FIRST_SUPERUSER = "admin"
 
 LINKS = [
     {
@@ -39,18 +38,19 @@ def init_db(db: Session) -> None:
     # But if you don't want to use migrations, create
     # the tables un-commenting the next line
     # Base.metadata.create_all(bind=engine)
-    if FIRST_SUPERUSER:
-        user = crud.user.get_by_username(db, username=FIRST_SUPERUSER)
+    if settings.FIRST_SUPERUSER:
+        user = crud.user.get_by_username(db, username=settings.FIRST_SUPERUSER)
         if not user:
             user_in = schemas.UserCreate(
-                username=FIRST_SUPERUSER,
+                username=settings.FIRST_SUPERUSER,
+                password=settings.FIRST_SUPERUSER_PW,
                 is_superuser=True,
             )
             user = crud.user.create(db, obj_in=user_in)  # noqa: F841
         else:
             logger.warning(
                 "Skipping creating superuser. User with username "
-                f"{FIRST_SUPERUSER} already exists. "
+                f"{settings.FIRST_SUPERUSER} already exists. "
             )
         if not user.links:
             for link in LINKS:

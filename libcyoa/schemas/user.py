@@ -12,6 +12,7 @@ class UserBase(BaseModel):
 # Properties to receive via API on creation
 class UserCreate(UserBase):
     username: str
+    password: str
 
 
 # Properties to receive via API on update
@@ -24,6 +25,11 @@ class UserInDBBase(UserBase):
 
     class Config:
         orm_mode = True
+
+
+# Additional properties stored in DB but not returned by API
+class UserInDB(UserInDBBase):
+    hashed_password: str
 
 
 # Additional properties to return via API

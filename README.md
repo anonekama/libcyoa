@@ -3,7 +3,12 @@
 * fastapi
 * "uvicorn[standard]"
 
-Developed on python 3.8.2
+Developed on python 3.9.16
+
+Make venv (using pyenv for 3.9.16)
+Install poetry
+`poetry install`
+`poetry run ./run.sh`
 
 # Planning
 
