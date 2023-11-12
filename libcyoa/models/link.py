@@ -5,7 +5,8 @@ from libcyoa.db.base_class import Base
 
 
 class Link(Base):
-    id = Column(Integer, primary_key=True, index=True)  # 2
+    """A link to a CYOA resource (e.g. imgchest, neocities)."""
+    id = Column(Integer, primary_key=True, index=True)
     url = Column(String(256), index=True)
     title = Column(String(256), nullable=True)
     host = Column(String(256), nullable=True)
