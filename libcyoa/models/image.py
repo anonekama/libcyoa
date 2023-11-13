@@ -1,8 +1,10 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Uuid
 from sqlalchemy.orm import DeclarativeBase, relationship
 
+from libcyoa.db.base_class import Base
 
-class Image(DeclarativeBase):
+
+class Image(Base):
     """An image in a CYOA link."""
     __tablename__ = "image"
 

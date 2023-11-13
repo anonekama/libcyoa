@@ -1,8 +1,10 @@
 from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text, UnicodeText, Uuid
 from sqlalchemy.orm import DeclarativeBase, relationship
 
+from libcyoa.db.base_class import Base
 
-class Link(DeclarativeBase):
+
+class Link(Base):
     """A link to a CYOA resource (e.g. imgchest, neocities)."""
     __tablename__ = "link"
 
@@ -55,7 +57,8 @@ class Link(DeclarativeBase):
     is_parsed = Column(Boolean)  # Has the daemon processed/computed this link?
     is_pinned = Column(Boolean)  # Is it considered a main link for a CYOA?
 
-class LinkReversion(DeclarativeBase):
+
+class LinkReversion(Base):
     """Reversion history of Link."""
     __tablename__ = "linkreversion"
 

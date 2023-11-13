@@ -1,8 +1,10 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Uuid
 from sqlalchemy.orm import DeclarativeBase, relationship
 
+from libcyoa.db.base_class import Base
 
-class Hash(DeclarativeBase):
+
+class Hash(Base):
     """A hash of an image."""
     __tablename__ = "hash"
 
