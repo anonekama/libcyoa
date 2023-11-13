@@ -9,9 +9,3 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     email = Column(String, nullable=True)
     is_superuser = Column(Boolean, default=False)
-    links = relationship(
-        "Link",
-        cascade="all,delete-orphan",
-        back_populates="submitter",
-        uselist=True,
-    )
